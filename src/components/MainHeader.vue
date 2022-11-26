@@ -1,24 +1,3 @@
-<template>
-  <header class="header">
-    <a href="" class="logo">something</a>
-    <input class="menu-btn" type="checkbox" id="menu-btn" />
-    <div class="btn-wrapper">
-      <label class="menu-icon" for="menu-btn"
-        ><span class="navicon"></span
-      ></label>
-
-      <router-link :to="{ name: 'register' }"
-        ><button class="button-87" role="button">Sign In</button></router-link
-      >
-    </div>
-    <ul class="menu">
-      <li><a href="#work">User</a></li>
-      <li><a href="#about">Cài đặt</a></li>
-      <li><a href="#about">Đăng xuất</a></li>
-    </ul>
-  </header>
-</template>
-
 <style>
 a {
   color: green;
@@ -178,22 +157,50 @@ a {
   top: 0;
 }
 
-/* 48em = 768px */
-
-/* @media (min-width: 48em) {
-  .header li {
-    float: left;
-  }
-  .header li a {
-    padding: 20px 30px;
-  }
-  .header .menu {
-    clear: none;
-    float: right;
-    max-height: none;
-  }
-  .header .menu-icon {
-    display: none;
-  }
-} */
+.logout {
+  display: block;
+  cursor: pointer;
+  pointer-events: all;
+  text-decoration: none;
+  color: #e03737;
+  font-weight: 600;
+}
 </style>
+
+<script>
+export default {
+  name: "MainHeader",
+}
+</script>
+
+<script setup>
+const props = defineProps({ userName: String })
+</script>
+
+<template>
+  <header class="header">
+    <a href="" class="logo">something</a>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <div class="btn-wrapper">
+      <label class="menu-icon" for="menu-btn"
+        ><span class="navicon"></span
+      ></label>
+
+      <router-link :to="{ name: 'register' }"
+        ><button class="button-87" v-if="userName" role="button">
+          {{ userName }}
+        </button>
+        <button class="button-87" v-if="!userName" role="button">
+          Sign In
+        </button>
+      </router-link>
+    </div>
+    <ul v-if="userName" class="menu">
+      <li><a href="#">User</a></li>
+      <li><a href="#">Cài đặt</a></li>
+      <li @click="$emit('ClickEventHandler')">
+        <a class="logout">Đăng xuất</a>
+      </li>
+    </ul>
+  </header>
+</template>

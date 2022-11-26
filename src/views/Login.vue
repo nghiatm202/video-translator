@@ -1,30 +1,3 @@
-<template>
-  <div class="signupFrm">
-    <form @submit.prevent="submitHandler" action="" class="form">
-      <h1 class="title">Login</h1>
-
-      <div class="inputContainer">
-        <input type="text" v-model="username" class="input" placeholder="a" />
-        <label for="" class="label">Username</label>
-      </div>
-
-      <div class="inputContainer">
-        <input
-          type="password"
-          v-model="password"
-          class="input"
-          placeholder="a"
-        />
-        <label for="" class="label">Password</label>
-      </div>
-
-      <div>
-        <input type="submit" class="submitBtn" value="Login" />
-      </div>
-    </form>
-  </div>
-</template>
-
 <style>
 .signupFrm {
   display: flex;
@@ -124,37 +97,66 @@
 </style>
 
 <script>
-import axios from "axios"
-
 export default {
-  name: "login",
-
-  data() {
-    return {
-      username: "",
-      password: "",
-    }
-  },
-
-  methods: {
-    async submitHandler() {
-      const data = {
-        username: this.username,
-        password: this.password,
-      }
-
-      const response = await axios.post(
-        "http://dichvideo.xyz/api/v1/auth/login",
-        data
-      )
-
-      console.log(response)
-
-      localStorage.setItem("access_token", response.data.data.access_token)
-      localStorage.setItem("user_name", response.data.data.user.name)
-
-      this.$router.push("/")
-    },
-  },
+  name: "LoginPage",
 }
 </script>
+
+<script setup>
+import { ref } from "vue"
+import { useRouter } from "vue-router"
+import { CallApi } from "../api"
+
+const router = useRouter()
+const username = ref("")
+const password = ref("")
+
+const submitHandler = async () => {
+  const data = {
+    username: username.value,
+    password: password.value,
+  }
+
+  const config = {
+    url: "auth/login",
+    method: "POST",
+    data: data,
+  }
+
+  await CallApi(config).then((res) => {
+    console.log(res.data)
+
+    localStorage.setItem("access_token", res.data.data.access_token)
+    localStorage.setItem("user_name", res.data.data.user.name)
+
+    return router.replace("/")
+  })
+}
+</script>
+
+<template>
+  <div class="signupFrm">
+    <form @submit.prevent="submitHandler" action="" class="form">
+      <h1 class="title">Login</h1>
+
+      <div class="inputContainer">
+        <input type="text" v-model="username" class="input" placeholder="a" />
+        <label for="" class="label">Username</label>
+      </div>
+
+      <div class="inputContainer">
+        <input
+          type="password"
+          v-model="password"
+          class="input"
+          placeholder="a"
+        />
+        <label for="" class="label">Password</label>
+      </div>
+
+      <div>
+        <input type="submit" class="submitBtn" value="Login" />
+      </div>
+    </form>
+  </div>
+</template>

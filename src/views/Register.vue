@@ -1,38 +1,3 @@
-<template>
-  <div class="signupFrm">
-    <form @submit.prevent="submitHandler" action="" class="form">
-      <h1 class="title">Sign up</h1>
-
-      <div class="inputContainer">
-        <input type="text" v-model="name" class="input" placeholder="a" />
-        <label for="" class="label">Full Name</label>
-      </div>
-
-      <div class="inputContainer">
-        <input type="text" v-model="username" class="input" placeholder="a" />
-        <label for="" class="label">Username</label>
-      </div>
-
-      <div class="inputContainer">
-        <input type="text" v-model="email" class="input" placeholder="a" />
-        <label for="" class="label">Email</label>
-      </div>
-
-      <div class="inputContainer">
-        <input
-          type="password"
-          v-model="password"
-          class="input"
-          placeholder="a"
-        />
-        <label for="" class="label">Password</label>
-      </div>
-
-      <input type="submit" class="submitBtn" value="Sign up" />
-    </form>
-  </div>
-</template>
-
 <style>
 .signupFrm {
   display: flex;
@@ -92,23 +57,6 @@
   color: transparent;
 }
 
-.submitBtn {
-  display: block;
-  margin-left: auto;
-  padding: 15px 30px;
-  border: none;
-  background-color: green;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 30px;
-}
-
-.submitBtn:hover {
-  background-color: #328427;
-}
-
 .input:focus + .label {
   top: -7px;
   left: 3px;
@@ -129,36 +77,132 @@
 .input:focus {
   border: 2px solid green;
 }
+
+.layout__buttons__component {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.layout__buttons__component .submitBtn,
+.layout__buttons__component .btn-primary {
+  display: block;
+  /* margin-left: auto; */
+  padding: 15px 30px;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.layout__buttons__component .submitBtn {
+  background-color: #328427;
+}
+.layout__buttons__component .btn-primary {
+  background-color: #4596ed;
+}
+
+/* .submitBtn { */
+/* margin-top: 30px; */
+/* } */
+
+.submitBtn:hover {
+  background-color: #328427;
+}
 </style>
 
 <script>
-import axios from "axios"
-
 export default {
-  name: "register",
-
-  data() {
-    return {
-      name: "",
-      username: "",
-      email: "",
-      password: "",
-    }
-  },
-
-  methods: {
-    async submitHandler() {
-      const data = {
-        name: this.name,
-        username: this.username,
-        email: this.email,
-        password: this.password,
-      }
-
-      await axios.post("http://dichvideo.xyz/api/v1/auth/register", data)
-
-      this.$router.push("/login")
-    },
-  },
+  name: "RegisterPage",
 }
 </script>
+
+<script setup>
+import { ref } from "vue"
+import { useRouter } from "vue-router"
+import { CallApi } from "../api"
+
+const router = useRouter()
+const registerUser = ref({
+  name: "",
+  username: "",
+  email: "",
+  password: "",
+})
+
+const submitHandler = async () => {
+  const data = {
+    name: registerUser.value.name,
+    username: registerUser.value.username,
+    email: registerUser.value.email,
+    password: registerUser.value.password,
+  }
+
+  const config = {
+    url: "auth/register",
+    method: "POST",
+    data: data,
+  }
+
+  await CallApi(config).then((res) => {
+    console.log(res.data)
+    if (res) router.replace("/login")
+  })
+}
+</script>
+
+<template>
+  <div class="signupFrm">
+    <form @submit.prevent="submitHandler" action="" class="form">
+      <h1 class="title">Sign up</h1>
+
+      <div class="inputContainer">
+        <input
+          type="text"
+          v-model="registerUser.name"
+          class="input"
+          placeholder="a"
+        />
+        <label for="" class="label">Full Name</label>
+      </div>
+
+      <div class="inputContainer">
+        <input
+          type="text"
+          v-model="registerUser.username"
+          class="input"
+          placeholder="a"
+        />
+        <label for="" class="label">Username</label>
+      </div>
+
+      <div class="inputContainer">
+        <input
+          type="text"
+          v-model="registerUser.email"
+          class="input"
+          placeholder="a"
+        />
+        <label for="" class="label">Email</label>
+      </div>
+
+      <div class="inputContainer">
+        <input
+          type="password"
+          v-model="registerUser.password"
+          class="input"
+          placeholder="a"
+        />
+        <label for="" class="label">Password</label>
+      </div>
+
+      <div class="layout__buttons__component">
+        <button class="btn-primary" router-link="/login">Login</button>
+        <button class="submitBtn">Sign up</button>
+      </div>
+    </form>
+  </div>
+</template>
