@@ -1,16 +1,15 @@
 import { createApp } from "vue"
 import App from "./App.vue"
 import axios from "axios"
-import router from "@/plugins/router"
+import router from "@/router"
+import store from "./store"
+import api from "./api"
+
 import "./style.css"
 
-axios.defaults.baseURL = "http://dichvideo.xyz/api/v1/"
-axios.defaults.headers.common["Authorization"] =
-  "Bearer klahdk9817landlkahoaowhd"
-axios.defaults.headers.post["Content-Type"] =
-  "application/x-www-form-urlencoded"
+api.init("http://dichvideo.xyz/api/v1")
 
-const app = createApp(App).use(router)
+const app = createApp(App).use(store).use(store).use(router)
 
 router.isReady().then(() => {
   app.mount("#app")

@@ -5,8 +5,8 @@
 
 <script setup>
 import { ref } from "vue"
-import MainHeaderVue from "../components/MainHeader.vue"
-import MainFooterVue from "../components/MainFooter.vue"
+import MainHeaderVue from "../components/Layout/MainHeader.vue"
+import MainFooterVue from "../components/Layout/MainFooter.vue"
 
 const userName = ref(localStorage.getItem("user_name"))
 
@@ -15,6 +15,6 @@ const logoutHandler = () => {
   localStorage.removeItem("user_name")
 
   console.log(userName.value)
-  return userName.value = ''
+  return (userName.value = "")
 }
 </script>

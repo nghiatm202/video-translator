@@ -128,7 +128,7 @@
 
 <script>
 export default {
-  name: 'MainFooter'
+  name: "MainFooter",
 }
 </script>
 
@@ -225,4 +225,3 @@ export default {
     </div>
   </footer>
 </template>
-

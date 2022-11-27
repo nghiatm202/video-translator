@@ -87,7 +87,8 @@
 }
 
 .layout__buttons__component .submitBtn,
-.layout__buttons__component .btn-primary {
+.layout__buttons__component .btn-primary,
+.layout__buttons__component .btn-danger {
   display: block;
   /* margin-left: auto; */
   padding: 15px 30px;
@@ -103,6 +104,9 @@
 }
 .layout__buttons__component .btn-primary {
   background-color: #4596ed;
+}
+.layout__buttons__component .btn-danger {
+  background-color: #ee5449;
 }
 
 /* .submitBtn { */
@@ -122,9 +126,10 @@ export default {
 
 <script setup>
 import { ref } from "vue"
+import { useStore } from "vuex"
 import { useRouter } from "vue-router"
-import { CallApi } from "../api"
 
+const store = useStore()
 const router = useRouter()
 const registerUser = ref({
   name: "",
@@ -133,7 +138,14 @@ const registerUser = ref({
   password: "",
 })
 
-const submitHandler = async () => {
+const goBackLastPage = () => {
+  return router.push("/")
+}
+const goLoginPage = () => {
+  return router.replace("/login")
+}
+
+const submitHandler = () => {
   const data = {
     name: registerUser.value.name,
     username: registerUser.value.username,
@@ -141,16 +153,7 @@ const submitHandler = async () => {
     password: registerUser.value.password,
   }
 
-  const config = {
-    url: "auth/register",
-    method: "POST",
-    data: data,
-  }
-
-  await CallApi(config).then((res) => {
-    console.log(res.data)
-    if (res) router.replace("/login")
-  })
+  store.commit("Register", data)
 }
 </script>
 
@@ -200,7 +203,8 @@ const submitHandler = async () => {
       </div>
 
       <div class="layout__buttons__component">
-        <button class="btn-primary" router-link="/login">Login</button>
+        <button class="btn-danger" @click="goBackLastPage()">Prev page</button>
+        <button class="btn-primary" @click="goLoginPage()">Login</button>
         <button class="submitBtn">Sign up</button>
       </div>
     </form>

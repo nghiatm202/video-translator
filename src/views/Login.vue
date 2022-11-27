@@ -59,7 +59,6 @@
 
 .submitBtn {
   display: block;
-  margin-left: auto;
   padding: 15px 30px;
   border: none;
   background-color: green;
@@ -67,7 +66,6 @@
   border-radius: 6px;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 30px;
 }
 
 .submitBtn:hover {
@@ -104,10 +102,9 @@ export default {
 
 <script setup>
 import { ref } from "vue"
-import { useRouter } from "vue-router"
-import { CallApi } from "../api"
+import { useStore } from "vuex"
 
-const router = useRouter()
+const store = useStore()
 const username = ref("")
 const password = ref("")
 
@@ -117,26 +114,14 @@ const submitHandler = async () => {
     password: password.value,
   }
 
-  const config = {
-    url: "auth/login",
-    method: "POST",
-    data: data,
-  }
-
-  await CallApi(config).then((res) => {
-    console.log(res.data)
-
-    localStorage.setItem("access_token", res.data.data.access_token)
-    localStorage.setItem("user_name", res.data.data.user.name)
-
-    return router.replace("/")
-  })
+  store.commit("LoginUser", data)
 }
 </script>
 
 <template>
   <div class="signupFrm">
-    <form @submit.prevent="submitHandler" action="" class="form">
+    <!-- <form @submit.prevent="submitHandler" action="" class="form"> -->
+    <div class="form">
       <h1 class="title">Login</h1>
 
       <div class="inputContainer">
@@ -155,8 +140,12 @@ const submitHandler = async () => {
       </div>
 
       <div>
-        <input type="submit" class="submitBtn" value="Login" />
+        <!-- <input type="submit" class="submitBtn" value="Login" /> -->
+        <button class="submitBtn" value="Login" @click="submitHandler">
+          Login
+        </button>
       </div>
-    </form>
+    </div>
+    <!-- </form> -->
   </div>
 </template>
