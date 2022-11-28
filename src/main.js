@@ -9,7 +9,7 @@ import "./style.css"
 
 api.init("http://dichvideo.xyz/api/v1")
 
-const app = createApp(App).use(store).use(store).use(router)
+const app = createApp(App).use(store).use(router)
 
 router.isReady().then(() => {
   app.mount("#app")
