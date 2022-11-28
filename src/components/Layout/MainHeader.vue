@@ -10,7 +10,7 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: 1rem 1.75rem;
+    padding: 1rem 30px;
 
     .layout__in__end {
       display: flex;
@@ -40,7 +40,7 @@
 
         .line {
           display: block;
-          width: 30px;
+          width: 22px;
           height: 2px;
           pointer-events: none;
 
@@ -97,7 +97,6 @@
     list-style: none;
     overflow: hidden;
     background-color: #fff;
-    transition: max-height 850ms ease;
 
     &.active {
       max-height: 1000px;
@@ -105,7 +104,7 @@
 
     .nav__link {
       display: block;
-      padding: 20px 20px;
+      padding: 1rem 30px;
       border-right: 1px solid #f4f4f4;
       text-decoration: none;
 
@@ -180,7 +179,6 @@
 .header .menu {
   clear: both;
   max-height: 0;
-  transition: max-height 0.2s ease-out;
 }
 
 .logout {
