@@ -118,13 +118,12 @@
 </style>
 
 <template>
-  <MainHeaderVue :userName="userName" @ClickEventHandler="logoutHandler" />
   <main>
     <div class="main-wrapper">
       <div class="main-sidebar">
         <div class="btn-sidebar-wrapper">
           <button class="my-videos">My Videos</button>
-          <button class="audio">Audio</button>
+          <button class="audio" @click="goAudioPage()">Audio</button>
           <button class="text">Text</button>
           <button class="preview">Preview</button>
         </div>
@@ -180,20 +179,13 @@
       </div>
     </div>
   </main>
-  <MainFooterVue />
 </template>
 
 <script setup>
-import { ref } from "vue"
-import MainHeaderVue from "../components/Layout/MainHeader.vue"
-import MainFooterVue from "../components/Layout/MainFooter.vue"
+import { useRouter } from "vue-router"
+const router = useRouter()
 
-const userName = ref(localStorage.getItem("user_name"))
-
-const logoutHandler = () => {
-  localStorage.removeItem("access_token")
-  localStorage.removeItem("user_name")
-
-  return (userName.value = "")
+const goAudioPage = () => {
+  return router.replace("/audio")
 }
 </script>
