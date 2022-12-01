@@ -124,7 +124,7 @@
         <div class="btn-sidebar-wrapper">
           <button class="my-videos">My Videos</button>
           <button class="audio" @click="goAudioPage()">Audio</button>
-          <button class="text">Text</button>
+          <button class="text" @click="goTextPage()">Text</button>
           <button class="preview">Preview</button>
         </div>
 
@@ -187,5 +187,9 @@ const router = useRouter()
 
 const goAudioPage = () => {
   return router.replace("/audio")
+}
+
+const goTextPage = () => {
+  return router.replace("/text")
 }
 </script>
