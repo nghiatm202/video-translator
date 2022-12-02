@@ -142,7 +142,7 @@ const goBackLastPage = () => {
   return router.push("/")
 }
 const goLoginPage = () => {
-  return router.replace("/login")
+  return router.replace({ name: 'login' });
 }
 
 const submitHandler = () => {
@@ -159,7 +159,7 @@ const submitHandler = () => {
 
 <template>
   <div class="signupFrm">
-    <form @submit.prevent="submitHandler" action="" class="form">
+    <div class="form">
       <h1 class="title">Sign up</h1>
 
       <div class="inputContainer">
@@ -205,8 +205,8 @@ const submitHandler = () => {
       <div class="layout__buttons__component">
         <button class="btn-danger" @click="goBackLastPage()">Prev page</button>
         <button class="btn-primary" @click="goLoginPage()">Login</button>
-        <button class="submitBtn">Sign up</button>
+        <button class="submitBtn" @click="submitHandler()">Sign up</button>
       </div>
-    </form>
+    </div>
   </div>
 </template>

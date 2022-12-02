@@ -99,6 +99,9 @@
     gap: 10px;
     flex-wrap: wrap;
     padding: 10px 0;
+    max-height: 580px;
+    overflow-y: auto;
+    margin-bottom: 30px;
 
     .sidebar-thumbnail {
       min-width: 190px;
@@ -195,32 +198,8 @@
         </div>
 
         <div class="sidebar-thumbnail-wrapper">
-          <div class="sidebar-thumbnail">
-            <img
-              src="https://dummyimage.com/300x200/000000/fff"
-              alt="thumbnail"
-            />
-          </div>
-
-          <div class="sidebar-thumbnail">
-            <img
-              src="https://dummyimage.com/300x200/000000/fff"
-              alt="thumbnail"
-            />
-          </div>
-
-          <div class="sidebar-thumbnail">
-            <img
-              src="https://dummyimage.com/300x200/000000/fff"
-              alt="thumbnail"
-            />
-          </div>
-
-          <div class="sidebar-thumbnail">
-            <img
-              src="https://dummyimage.com/300x200/000000/fff"
-              alt="thumbnail"
-            />
+          <div class="sidebar-thumbnail" v-for="item in videoDataFaker">
+            <img :src="item.thumbnail" alt="thumbnail" />
           </div>
         </div>
 
@@ -328,6 +307,59 @@ import { Modal } from "usemodal-vue3"
 let uploadVideoIsVisible = ref(false)
 let videoListIsVisible = ref(false)
 let videoItemPopup = ref(false)
+
+const videoDataFaker = [
+  {
+    id: "1",
+    thumbnail: "https://dummyimage.com/300x200/000000/fff",
+    alt: "thumbnail",
+  },
+  {
+    id: "2",
+    thumbnail: "https://dummyimage.com/300x200/000000/fff",
+    alt: "thumbnail",
+  },
+  {
+    id: "3",
+    thumbnail: "https://dummyimage.com/300x200/000000/fff",
+    alt: "thumbnail",
+  },
+  {
+    id: "4",
+    thumbnail: "https://dummyimage.com/300x200/000000/fff",
+    alt: "thumbnail",
+  },
+  {
+    id: "5",
+    thumbnail: "https://dummyimage.com/300x200/000000/fff",
+    alt: "thumbnail",
+  },
+  {
+    id: "1",
+    thumbnail: "https://dummyimage.com/300x200/000000/fff",
+    alt: "thumbnail",
+  },
+  {
+    id: "2",
+    thumbnail: "https://dummyimage.com/300x200/000000/fff",
+    alt: "thumbnail",
+  },
+  {
+    id: "3",
+    thumbnail: "https://dummyimage.com/300x200/000000/fff",
+    alt: "thumbnail",
+  },
+  {
+    id: "4",
+    thumbnail: "https://dummyimage.com/300x200/000000/fff",
+    alt: "thumbnail",
+  },
+  {
+    id: "5",
+    thumbnail: "https://dummyimage.com/300x200/000000/fff",
+    alt: "thumbnail",
+  },
+]
 
 const showPopupUploadVideo = () => {
   uploadVideoIsVisible.value = true

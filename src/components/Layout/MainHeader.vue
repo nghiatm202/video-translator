@@ -198,13 +198,30 @@ export default {
 </script>
 
 <script setup>
-import { ref } from "vue"
+import { ref, computed, onBeforeMount } from "vue"
+import { useStore } from "vuex"
 import { useRouter } from "vue-router"
 
+const store = useStore()
 const router = useRouter()
-const props = defineProps({ userName: String })
 
 const OpenHambuger = ref(false)
+
+const userName = computed(() => {
+  let user_name = store.state.user.login
+
+  return user_name !== "" ? user_name.user.name : ""
+})
+
+const CookieLogin = () => {
+  const user = localStorage.getItem("user")
+
+  if (user) store.commit("storeUser", JSON.parse(user))
+}
+
+const logoutHandler = () => {
+  store.commit("resetUser")
+}
 
 const GoRegister = () => {
   return router.push("/register")
@@ -214,6 +231,10 @@ const OpenNestedGroup = () => {
   if (OpenHambuger.value === false) return (OpenHambuger.value = true)
   else OpenHambuger.value = false
 }
+
+onBeforeMount(() => {
+  CookieLogin()
+})
 </script>
 
 <template>
@@ -225,11 +246,7 @@ const OpenNestedGroup = () => {
         <button class="btn button__custom__style" v-if="userName" role="button">
           {{ userName }}
         </button>
-        <button
-          class="btn button__custom__style"
-          v-else
-          @click.native="GoRegister()"
-        >
+        <button class="btn button__custom__style" v-else @click="GoRegister()">
           Sign up
         </button>
 
@@ -253,7 +270,7 @@ const OpenNestedGroup = () => {
     >
       <li><a href="#" class="nav__link">User</a></li>
       <li><a href="#" class="nav__link">Cài đặt</a></li>
-      <li @click="$emit('ClickEventHandler')">
+      <li @click="logoutHandler()">
         <a class="logout nav__link">Đăng xuất</a>
       </li>
     </ul>

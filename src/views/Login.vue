@@ -125,14 +125,14 @@ const submitHandler = async () => {
       <h1 class="title">Login</h1>
 
       <div class="inputContainer">
-        <input type="text" v-model="username" class="input" placeholder="a" />
+        <input type="text" v-model.lazy="username" class="input" placeholder="a" />
         <label for="" class="label">Username</label>
       </div>
 
       <div class="inputContainer">
         <input
           type="password"
-          v-model="password"
+          v-model.lazy="password"
           class="input"
           placeholder="a"
         />
@@ -141,7 +141,7 @@ const submitHandler = async () => {
 
       <div>
         <!-- <input type="submit" class="submitBtn" value="Login" /> -->
-        <button class="submitBtn" value="Login" @click="submitHandler">
+        <button class="submitBtn"  @click="submitHandler()">
           Login
         </button>
       </div>

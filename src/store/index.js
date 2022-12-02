@@ -1,15 +1,16 @@
 import { createStore } from "vuex"
-import { postData } from "../api"
+import api from "../api"
 
 import router from "../router"
-import axios from "axios"
 
-const authenticateBaseURL = axios.create({
-  baseURL: "http://dichvideo.xyz/api/v1/auth",
-})
+const authenticateBaseURL = api.createNewBaseURL(
+  "http://dichvideo.xyz/api/v1",
+  10000
+)
 
 const store = createStore({
   state: {
+    holder: [],
     user: {
       register: {
         success: false,
@@ -19,8 +20,23 @@ const store = createStore({
   },
   getters: {},
   mutations: {
+    jsonHolder(state, payload) {
+      return (state.holder = payload)
+    },
+
+    storeUser(state, payload) {
+      return (state.user.login = payload)
+    },
+
+    resetUser(state) {
+      localStorage.removeItem("access_token")
+      localStorage.removeItem("user")
+
+      return (state.user.login = "")
+    },
+
     async Register(state, payload) {
-      const response = await postData(authenticateBaseURL, "register", payload)
+      const response = await authenticateBaseURL.post("auth/register", payload)
 
       if (response.status === 200) {
         router.replace("/login")
@@ -29,25 +45,24 @@ const store = createStore({
     },
 
     async LoginUser(state, payload) {
-      const response = await postData(authenticateBaseURL, "login", payload)
+      const response = await authenticateBaseURL.post("auth/login", payload)
 
       if (response.status === 200) {
-        console.log(response.detail)
-        console.log(response.data)
         state.user.login = response.data
         authenticateBaseURL.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${response.data.access_token}`
 
         localStorage.setItem("access_token", response.data?.data?.access_token)
-        localStorage.setItem("user_name", response.data?.data?.user.name)
+        localStorage.setItem("user", JSON.stringify(response.data?.data))
 
-        return router.replace("/")
+        state.user.login = response.data?.data
+        router.replace("/")
+
+        return localStorage.getItem("user")
       }
     },
   },
-
-  actions: {},
 })
 
 export default store
