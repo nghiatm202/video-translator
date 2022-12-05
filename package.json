@@ -12,6 +12,8 @@
     "node-sass": "^8.0.0",
     "usemodal-vue3": "^0.3.7",
     "vue": "^3.2.41",
+    "vue-custom-range-slider": "^0.2.3",
+    "vue-simple-range-slider": "^1.0.0",
     "vuex": "^4.1.0"
   },
   "devDependencies": {

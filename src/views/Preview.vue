@@ -13,35 +13,46 @@
   }
 }
 
-.modal-vue3-body {
+.preview-thumbnail-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
+  padding: 10px 0;
+  max-height: 580px;
+  overflow-y: auto;
+  margin-bottom: 30px;
 
-  .videoItem {
+  .preview-thumbnail {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
+    border-bottom: 1px solid green;
+    padding: 10px;
 
-    .video-image {
-      width: 150px;
-      height: 100px;
-      overflow: hidden;
-      border-radius: 8px;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+    &:last-child {
+      border-bottom: 0px;
     }
 
-    .video-info {
+    img {
+      padding: 10px;
+      border: 2px solid #151515;
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
+
+    .audio-info {
       display: flex;
       flex-direction: column;
       gap: 4px;
     }
   }
+}
+
+.modal-vue3-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
   .input-wrapper {
     width: 100%;
@@ -93,41 +104,13 @@
     }
   }
 
-  .audio-thumbnail-wrapper {
+  .video-thumbnail-wrapper {
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 10px 0;
-    max-height: 580px;
+    max-height: 500px;
     overflow-y: auto;
-    margin-bottom: 30px;
-
-    .audio-thumbnail {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      border-bottom: 1px solid green;
-      padding: 10px;
-
-      &:last-child {
-        border-bottom: 0px;
-      }
-
-      img {
-        padding: 10px;
-        border: 2px solid #151515;
-        border-radius: 100%;
-        width: 15px;
-        height: 15px;
-        cursor: pointer;
-      }
-
-      .audio-info {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-      }
-    }
   }
 
   .file-input-wrapper {
@@ -144,10 +127,10 @@
     visibility: hidden;
   }
   .custom-file-input-second::before {
-    content: "Chọn từ video" !important;
+    content: "Chọn từ File" !important;
   }
   .custom-file-input::before {
-    content: "Upload Audio";
+    content: "Chọn từ Audio";
     color: black;
     display: inline-block;
     background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
@@ -172,24 +155,33 @@
   }
 }
 
-.main-video {
-  flex: 1;
-  width: 100%;
-  text-align: center;
+.preview-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 45%;
 
-  video {
+  select {
+    padding: 10px;
+    margin: 0;
     width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    box-sizing: border-box;
   }
 
-  .video-icon-wrapper {
-    margin-top: 20px;
+  .try-listening,
+  .download,
+  .speed,
+  .accent {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 40px;
+    cursor: pointer;
+    gap: 10px;
 
-    img {
-      cursor: pointer;
+    .track-container {
+      margin-left: 20px;
     }
   }
 }
@@ -212,15 +204,15 @@
           <button class="preview">Preview</button>
         </div>
 
-        <div class="audio-thumbnail-wrapper">
-          <div class="audio-thumbnail" v-for="item in videoDataFaker">
-            <img src="public/icon-pause.svg" alt="pause icon" />
-            <div class="audio-info">
-              <span class="audio-name">{{ item.name }}</span>
-              <p class="audio-language">
+        <div class="preview-thumbnail-wrapper">
+          <div class="preview-thumbnail" v-for="item in videoDataFaker">
+            <img src="public/icon-menu.svg" alt="menu icon" />
+            <div class="preview-info">
+              <span class="preview-name">{{ item.name }}</span>
+              <p class="preview-language">
                 Ngôn ngữ: <span>{{ item.language }}</span>
               </p>
-              <span class="audio-time"
+              <span class="preview-time"
                 >Ngày tạo: <time>{{ item.created_at }}</time>
               </span>
             </div>
@@ -236,21 +228,28 @@
         </div>
       </div>
 
-      <div class="main-video">
-        <div class="main-video-container">
-          <video height="500" controls>
-            <source
-              src="http://media.w3.org/2010/05/sintel/trailer.mp4"
-              type="video/mp4"
-            />
-          </video>
-
-          <div class="video-icon-wrapper">
-            <img src="public/icon-prev.svg" alt="prev icon" class="icon-prev" />
-            <img src="public/icon-play.svg" alt="play icon" class="icon-play" />
-            <img src="public/icon-next.svg" alt="next icon" class="icon-next" />
-          </div>
-        </div>
+      <div class="preview-wrapper">
+        <select class="preview-language">
+          <option value="Tiếng Việt">Tiếng Việt</option>
+          <option value="English">English</option>
+          <option value="日本語">日本語</option>
+        </select>
+        <p class="speed">
+          <span>Speed</span>
+          <RangeSpeed />
+        </p>
+        <p class="accent">
+          <span>Giọng đọc</span>
+          <RangeAccent />
+        </p>
+        <p class="try-listening">
+          <span>Nghe thử</span>
+          <img src="public/icon-pause.svg" alt="pause icon" />
+        </p>
+        <p class="download">
+          <span>Download</span>
+          <img src="public/icon-download.svg" alt="download icon" />
+        </p>
       </div>
     </div>
 
@@ -327,10 +326,8 @@
 <script setup>
 import { ref } from "vue"
 import { Modal } from "usemodal-vue3"
-
-let uploadVideoIsVisible = ref(false)
-let videoListIsVisible = ref(false)
-let videoItemPopup = ref(false)
+import RangeAccent from "../components/Common/RangeAccent.vue"
+import RangeSpeed from "../components/Common/RangeSpeed.vue"
 
 const videoDataFaker = [
   {
@@ -379,6 +376,10 @@ const videoDataFaker = [
     created_at: "14/11/2002",
   },
 ]
+
+let uploadVideoIsVisible = ref(false)
+let videoListIsVisible = ref(false)
+let videoItemPopup = ref(false)
 
 const showPopupUploadVideo = () => {
   uploadVideoIsVisible.value = true

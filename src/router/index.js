@@ -22,6 +22,11 @@ const routes = [
     name: "text",
     component: () => import("@/views/Text.vue"),
   },
+  {
+    path: "/preview",
+    name: "preview",
+    component: () => import("@/views/Preview.vue"),
+  },
 ]
 
 const router = createRouter({

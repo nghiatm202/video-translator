@@ -93,24 +93,13 @@
     }
   }
 
-  .sidebar-thumbnail-wrapper {
+  .video-thumbnail-wrapper {
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 10px 0;
     max-height: 500px;
     overflow-y: auto;
-
-    .sidebar-thumbnail {
-      min-width: 190px;
-      height: 150px;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
   }
 
   .file-input-wrapper {
@@ -167,17 +156,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 40px 0;
-  border-bottom: 1px dashed green;
-
-  &:first-child {
-    padding-top: 0;
-  }
-
-  &:last-child {
-    padding-bottom: 0;
-    border-bottom: 0px;
-  }
+  max-height: 600px;
+  padding-right: 10px;
+  overflow-y: auto;
 
   .icon-change-text {
     width: 40px;
@@ -292,7 +273,7 @@
           <button class="preview">Preview</button>
         </div>
 
-        <div class="sidebar-thumbnail-wrapper">
+        <div class="video-thumbnail-wrapper">
           <div class="videoItem" v-for="item in videoDataFaker">
             <div class="video-image">
               <img src="https://dummyimage.com/150x100/000/fff" alt="" />
@@ -319,130 +300,6 @@
       </div>
 
       <divc class="text-wrapper">
-        <div class="text-wrapper-container">
-          <div class="text-component-item">
-            <select class="line">
-              <option value="VN">US</option>
-              <option value="US">VN</option>
-            </select>
-
-            <div class="text-content">
-              <div class="number-wrapper">
-                <div class="number-left">
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                </div>
-                <img
-                  src="public/icon-arrow-right-long.svg"
-                  alt="arrow right icon"
-                />
-                <div class="number-right">
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="5" />
-                  <input class="number-item" type="number" value="6" />
-                </div>
-              </div>
-
-              <input
-                type="text"
-                placeholder="Hello my name is A"
-                class="input-first"
-              />
-
-              <div class="number-wrapper">
-                <div class="number-left">
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                </div>
-                <img
-                  src="public/icon-arrow-right-long.svg"
-                  alt="arrow right icon"
-                />
-                <div class="number-right">
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="5" />
-                  <input class="number-item" type="number" value="6" />
-                </div>
-              </div>
-
-              <input type="text" placeholder="It's my" class="input-second" />
-            </div>
-          </div>
-
-          <div class="text-btn">
-            <button>Save</button>
-            <button>Save As</button>
-          </div>
-
-          <img
-            src="public/icon-change.svg"
-            alt="change icon"
-            class="icon-change-text"
-          />
-          <div class="text-component-item">
-            <!-- <div class="line">VN</div> -->
-            <select class="line">
-              <option value="VN">VN</option>
-              <option value="US">US</option>
-            </select>
-
-            <div class="text-content">
-              <div class="number-wrapper">
-                <div class="number-left">
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                </div>
-                <img
-                  src="public/icon-arrow-right-long.svg"
-                  alt="arrow right icon"
-                />
-                <div class="number-right">
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="5" />
-                  <input class="number-item" type="number" value="6" />
-                </div>
-              </div>
-
-              <input type="text" placeholder="Xin chào" class="input-first" />
-
-              <div class="number-wrapper">
-                <div class="number-left">
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                </div>
-                <img
-                  src="public/icon-arrow-right-long.svg"
-                  alt="arrow right icon"
-                />
-                <div class="number-right">
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="0" />
-                  <input class="number-item" type="number" value="5" />
-                  <input class="number-item" type="number" value="6" />
-                </div>
-              </div>
-
-              <input type="text" placeholder="Đây là" class="input-second" />
-            </div>
-          </div>
-
-          <div class="text-btn">
-            <button>Save</button>
-            <button>Save As</button>
-          </div>
-        </div>
-
         <div class="text-wrapper-container">
           <div class="text-component-item">
             <select class="line">

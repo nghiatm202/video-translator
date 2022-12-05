@@ -125,7 +125,7 @@
           <button class="my-videos">My Videos</button>
           <button class="audio" @click="goAudioPage()">Audio</button>
           <button class="text" @click="goTextPage()">Text</button>
-          <button class="preview">Preview</button>
+          <button class="preview" @click="goPreviewPage()">Preview</button>
         </div>
 
         <div class="sidebar-thumbnail-wrapper">
@@ -187,10 +187,14 @@ import { useRouter } from "vue-router"
 const router = useRouter()
 
 const goAudioPage = () => {
-  return router.replace("/audio")
+  return router.push("/audio")
 }
 
 const goTextPage = () => {
-  return router.replace("/text")
+  return router.push("/text")
+}
+
+const goPreviewPage = () => {
+  return router.push("/preview")
 }
 </script>
