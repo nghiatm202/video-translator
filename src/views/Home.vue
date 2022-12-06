@@ -11,30 +11,6 @@
   flex-direction: column;
   flex: 1;
 
-  .btn-sidebar-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    button {
-      background-color: green;
-      border: none;
-      color: #fff;
-      padding: 10px 0;
-      flex: 1;
-      border-left: 1px solid #fff;
-      border-bottom: none;
-      border-top: none;
-      font-family: inherit;
-      font-size: 16px;
-      cursor: pointer;
-
-      &:last-child {
-        border-right: 1px solid #fff;
-      }
-    }
-  }
-
   .sidebar-thumbnail-wrapper {
     display: flex;
     align-items: center;
@@ -121,12 +97,7 @@
   <main>
     <div class="main-wrapper">
       <div class="main-sidebar">
-        <div class="btn-sidebar-wrapper">
-          <button class="my-videos">My Videos</button>
-          <button class="audio" @click="goAudioPage()">Audio</button>
-          <button class="text" @click="goTextPage()">Text</button>
-          <button class="preview" @click="goPreviewPage()">Preview</button>
-        </div>
+        <TopBar />
 
         <div class="sidebar-thumbnail-wrapper">
           <div class="sidebar-thumbnail">
@@ -171,9 +142,21 @@
           </video>
 
           <div class="video-icon-wrapper">
-            <img src="../assets/icon-prev.svg" alt="prev icon" class="icon-prev" />
-            <img src="../assets/icon-play.svg" alt="play icon" class="icon-play" />
-            <img src="../assets/icon-next.svg" alt="next icon" class="icon-next" />
+            <img
+              src="../assets/icon-prev.svg"
+              alt="prev icon"
+              class="icon-prev"
+            />
+            <img
+              src="../assets/icon-play.svg"
+              alt="play icon"
+              class="icon-play"
+            />
+            <img
+              src="../assets/icon-next.svg"
+              alt="next icon"
+              class="icon-next"
+            />
           </div>
         </div>
       </div>
@@ -182,19 +165,5 @@
 </template>
 
 <script setup>
-import { useRouter } from "vue-router"
-
-const router = useRouter()
-
-const goAudioPage = () => {
-  return router.push("/audio")
-}
-
-const goTextPage = () => {
-  return router.push("/text")
-}
-
-const goPreviewPage = () => {
-  return router.push("/preview")
-}
+import TopBar from "../components/Common/TopBar.vue"
 </script>

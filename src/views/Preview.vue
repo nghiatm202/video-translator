@@ -80,30 +80,6 @@
   flex-direction: column;
   flex: 1;
 
-  .btn-sidebar-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    button {
-      background-color: green;
-      border: none;
-      color: #fff;
-      padding: 10px 0;
-      flex: 1;
-      border-left: 1px solid #fff;
-      border-bottom: none;
-      border-top: none;
-      font-family: inherit;
-      font-size: 16px;
-      cursor: pointer;
-
-      &:last-child {
-        border-right: 1px solid #fff;
-      }
-    }
-  }
-
   .video-thumbnail-wrapper {
     display: flex;
     flex-direction: column;
@@ -197,12 +173,7 @@
   <main>
     <div class="main-wrapper">
       <div class="main-sidebar">
-        <div class="btn-sidebar-wrapper">
-          <button class="my-videos">My Videos</button>
-          <button class="audio">Audio</button>
-          <button class="text">Text</button>
-          <button class="preview">Preview</button>
-        </div>
+        <TopBar />
 
         <div class="preview-thumbnail-wrapper">
           <div class="preview-thumbnail" v-for="item in videoDataFaker">
@@ -328,6 +299,7 @@ import { ref } from "vue"
 import { Modal } from "usemodal-vue3"
 import RangeAccent from "../components/Common/RangeAccent.vue"
 import RangeSpeed from "../components/Common/RangeSpeed.vue"
+import TopBar from "../components/Common/TopBar.vue"
 
 const videoDataFaker = [
   {
