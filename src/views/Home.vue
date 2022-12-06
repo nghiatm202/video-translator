@@ -171,9 +171,9 @@
           </video>
 
           <div class="video-icon-wrapper">
-            <img src="public/icon-prev.svg" alt="prev icon" class="icon-prev" />
-            <img src="public/icon-play.svg" alt="play icon" class="icon-play" />
-            <img src="public/icon-next.svg" alt="next icon" class="icon-next" />
+            <img src="../assets/icon-prev.svg" alt="prev icon" class="icon-prev" />
+            <img src="../assets/icon-play.svg" alt="play icon" class="icon-play" />
+            <img src="../assets/icon-next.svg" alt="next icon" class="icon-next" />
           </div>
         </div>
       </div>

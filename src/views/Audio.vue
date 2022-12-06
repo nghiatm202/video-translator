@@ -214,7 +214,7 @@
 
         <div class="audio-thumbnail-wrapper">
           <div class="audio-thumbnail" v-for="item in videoDataFaker">
-            <img src="public/icon-pause.svg" alt="pause icon" />
+            <img src="../assets/icon-pause.svg" alt="pause icon" />
             <div class="audio-info">
               <span class="audio-name">{{ item.name }}</span>
               <p class="audio-language">
@@ -246,9 +246,9 @@
           </video>
 
           <div class="video-icon-wrapper">
-            <img src="public/icon-prev.svg" alt="prev icon" class="icon-prev" />
-            <img src="public/icon-play.svg" alt="play icon" class="icon-play" />
-            <img src="public/icon-next.svg" alt="next icon" class="icon-next" />
+            <img src="../assets/icon-prev.svg" alt="prev icon" class="icon-prev" />
+            <img src="../assets/icon-play.svg" alt="play icon" class="icon-play" />
+            <img src="../assets/icon-next.svg" alt="next icon" class="icon-next" />
           </div>
         </div>
       </div>

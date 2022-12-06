@@ -316,7 +316,7 @@
                   <input class="number-item" type="number" value="0" />
                 </div>
                 <img
-                  src="public/icon-arrow-right-long.svg"
+                  src="../assets/icon-arrow-right-long.svg"
                   alt="arrow right icon"
                 />
                 <div class="number-right">
@@ -341,7 +341,7 @@
                   <input class="number-item" type="number" value="0" />
                 </div>
                 <img
-                  src="public/icon-arrow-right-long.svg"
+                  src="../assets/icon-arrow-right-long.svg"
                   alt="arrow right icon"
                 />
                 <div class="number-right">
@@ -362,7 +362,7 @@
           </div>
 
           <img
-            src="public/icon-change.svg"
+            src="../assets/icon-change.svg"
             alt="change icon"
             class="icon-change-text"
           />
@@ -382,7 +382,7 @@
                   <input class="number-item" type="number" value="0" />
                 </div>
                 <img
-                  src="public/icon-arrow-right-long.svg"
+                  src="../assets/icon-arrow-right-long.svg"
                   alt="arrow right icon"
                 />
                 <div class="number-right">
@@ -403,7 +403,7 @@
                   <input class="number-item" type="number" value="0" />
                 </div>
                 <img
-                  src="public/icon-arrow-right-long.svg"
+                  src="../assets/icon-arrow-right-long.svg"
                   alt="arrow right icon"
                 />
                 <div class="number-right">

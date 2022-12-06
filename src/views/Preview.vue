@@ -206,7 +206,7 @@
 
         <div class="preview-thumbnail-wrapper">
           <div class="preview-thumbnail" v-for="item in videoDataFaker">
-            <img src="public/icon-menu.svg" alt="menu icon" />
+            <img src="../assets/icon-menu.svg" alt="menu icon" />
             <div class="preview-info">
               <span class="preview-name">{{ item.name }}</span>
               <p class="preview-language">
@@ -244,11 +244,11 @@
         </p>
         <p class="try-listening">
           <span>Nghe thử</span>
-          <img src="public/icon-pause.svg" alt="pause icon" />
+          <img src="../assets/icon-pause.svg" alt="pause icon" />
         </p>
         <p class="download">
           <span>Download</span>
-          <img src="public/icon-download.svg" alt="download icon" />
+          <img src="../assets/icon-download.svg" alt="download icon" />
         </p>
       </div>
     </div>
