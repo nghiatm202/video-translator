@@ -111,18 +111,18 @@
     margin-top: auto;
   }
 
-  .custom-file-input {
+  .custom-file-input-audio {
     color: transparent;
     font-family: inherit;
     width: 150px;
   }
-  .custom-file-input::-webkit-file-upload-button {
+  .custom-file-input-audio::-webkit-file-upload-button {
     visibility: hidden;
   }
-  .custom-file-input-second::before {
-    content: "Chọn từ video" !important;
+  .custom-file-input-audio-second::before {
+    content: "Chọn từ Audio" !important;
   }
-  .custom-file-input::before {
+  .custom-file-input-audio::before {
     content: "Upload Audio";
     color: black;
     display: inline-block;
@@ -137,13 +137,13 @@
     font-weight: 700;
     font-size: 10pt;
   }
-  .custom-file-input:hover::before {
+  .custom-file-input-audio:hover::before {
     border-color: black;
   }
-  .custom-file-input:active {
+  .custom-file-input-audio:active {
     outline: 0;
   }
-  .custom-file-input:active::before {
+  .custom-file-input-audio:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
   }
 }
@@ -199,9 +199,9 @@
         </div>
 
         <div class="file-input-wrapper">
-          <div class="custom-file-input" @click="showPopupUploadVideo" />
+          <div class="custom-file-input-audio" @click="showPopupUploadVideo" />
           <div
-            class="custom-file-input custom-file-input-second"
+            class="custom-file-input-audio custom-file-input-audio-second"
             @click="showPopupListVideo"
           />
         </div>
