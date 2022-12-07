@@ -161,9 +161,11 @@
         </div>
       </div>
     </div>
+    <Slider />
   </main>
 </template>
 
 <script setup>
+import Slider from '../components/Common/Slider.vue';
 import TopBar from "../components/Common/TopBar.vue"
 </script>

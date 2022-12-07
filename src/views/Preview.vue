@@ -224,6 +224,8 @@
       </div>
     </div>
 
+    <Slider />
+
     <Modal title="Upload Video" v-model:visible="uploadVideoIsVisible">
       <div class="input-wrapper">
         <label for="name">Tên: </label>
@@ -300,6 +302,7 @@ import { Modal } from "usemodal-vue3"
 import RangeAccent from "../components/Common/RangeAccent.vue"
 import RangeSpeed from "../components/Common/RangeSpeed.vue"
 import TopBar from "../components/Common/TopBar.vue"
+import Slider from '../components/Common/Slider.vue';
 
 const videoDataFaker = [
   {
