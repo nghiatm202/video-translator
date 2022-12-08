@@ -162,10 +162,19 @@
       </div>
     </div>
     <Slider />
+    <button @click="toast" type="success">Toast it!</button>
   </main>
 </template>
 
 <script setup>
-import Slider from '../components/Common/Slider.vue';
+import Slider from "../components/Common/Slider.vue"
 import TopBar from "../components/Common/TopBar.vue"
+import { createToast } from "mosha-vue-toastify"
+import "mosha-vue-toastify/dist/style.css"
+
+const toast = () => {
+  createToast("Nghĩa đại ca", {
+    type: "success",
+  })
+}
 </script>
